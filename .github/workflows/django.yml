@@ -26,14 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Django Make Migrations
+    - name: Run Tests
       run: |
-        python manage.py makemigrations --noinput
-
-    - name: Django Migrate
-      run: |
-        python manage.py migrate --noinput
-
+        python manage.py test
 
   deploy:
     needs: build
