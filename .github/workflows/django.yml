@@ -34,9 +34,6 @@ jobs:
       run: |
         python manage.py migrate --noinput
 
-    - name: Django Collectstatic
-      run: |
-        python manage.py collectstatic --noinput
 
   deploy:
     needs: build
