@@ -35,10 +35,11 @@
      steps:
      - name: Checkout repository
        uses: actions/checkout@v4
-     - name: Compress project files
-       run: |
-         tar -czf prosaanti.tar.gz .
-     
-     - name: Upload compressed file via curl
-       run: |
-         curl -T prosaanti.tar.gz ftp://${{ secrets.FTP_USERNAME_PTI }}:${{ secrets.FTP_PASSWORD_PTI }}@${{ secrets.FTP_SERVER_PTI }}/public_html/
+     - name: 📁 FTP Deploy
+       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+       with:
+         server: ${{ secrets.FTP_SERVER_PTI }}
+         username: ${{ secrets.FTP_USERNAME_PTI }}
+         password: ${{ secrets.FTP_PASSWORD_PTI }}
+         local-dir: ./
+         server-dir: /public_html/prosaanti/
