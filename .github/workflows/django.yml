@@ -35,6 +35,10 @@
      steps:
      - name: Checkout repository
        uses: actions/checkout@v4
-     - name: Upload file via curl
+     - name: Compress project files
        run: |
-         curl -T your-file.tar.gz ftp://${{ secrets.FTP_USERNAME_PTI }}:${{ secrets.FTP_PASSWORD_PTI }}@${{ secrets.FTP_SERVER_PTI }}/public_html/
+         tar -czf prosaanti.tar.gz .
+     
+     - name: Upload compressed file via curl
+       run: |
+         curl -T prosaanti.tar.gz ftp://${{ secrets.FTP_USERNAME_PTI }}:${{ secrets.FTP_PASSWORD_PTI }}@${{ secrets.FTP_SERVER_PTI }}/public_html/
