@@ -17,9 +17,6 @@
     </style>
   </head>
   <body>
-    <div class="mb-20">
-      {% include 'nav.html' %}
-    </div>
-    {% block body %} {% endblock %}
-  </body>
+    <div class="mb-20">{% include 'dashboard/admin_sidebar.html' %}</div>
+    {% block admin_body %} {% endblock %} 
 </html>
