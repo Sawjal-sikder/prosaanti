@@ -46,7 +46,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME_PTI }}
         password: ${{ secrets.FTP_PASSWORD_PTI }}
         server-dir: /prosaanti/
-        local-dir: ./prosaanti
+        local-dir: ./prosaanti/
 
     - name: 🌐 Deploy to public_html (prosaanti.nmmbd.com)
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -55,4 +55,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME_PTI }}
         password: ${{ secrets.FTP_PASSWORD_PTI }}
         server-dir: /public_html/prosaanti.nmmbd.com/
-        local-dir: ./prosaanti
+        local-dir: ./prosaanti/
