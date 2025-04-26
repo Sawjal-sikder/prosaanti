@@ -43,3 +43,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME_PTI }}
         password: ${{ secrets.FTP_PASSWORD_PTI }}
         local-dir: ./prosaanti/
+        server-dir: /public_html/prosaanti/
