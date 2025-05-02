@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prosaanti | {% block title %}Base Page{% endblock title %}</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
@@ -13,13 +14,19 @@
       @theme {
         --color-primary: #020570;
         --color-secondary: #fdcc02;
+        --color-auth: #1f2937;
+        --color-input: #374151;
       }
     </style>
   </head>
   <body>
+    
+    {% block navbar  %}      
     <div class="mb-20">
       {% include 'nav.html' %}
     </div>
+    {% endblock  %}
+
     {% block body %} {% endblock %}
   </body>
 </html>

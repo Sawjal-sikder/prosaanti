@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block title %}Login{% endblock title %} 
+{% block navbar %}{% endblock navbar %} {% block body %}
+<div class="p-4">
+  <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-5 items-center">
+    <div class="bg-auth p-7 rounded-lg text-white">
+      <div class="flex">
+        <img src="" alt="" class="mb-2" />
+        <p class="text-2xl">Prosaanti</p>
+      </div>
+
+
+      <p class="text-2xl font-bold pt-5">Welcome back</p>
+      <div class="flex py-2 text-sm gap-x-2">
+        <p class="text-gray-400">
+          Start your account in seconds. Don’t have an account?
+        </p>
+        <p class="cursor-pointer text-blue-500">Sign up.</p>
+      </div>
+
+
+      <form action="" method="POST" class="my-2">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-white"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-medium text-white"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter your password"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Login
+        </button>
+      </form>
+
+      
+      <div class="text-sm py-4 flex justify-between items-center">
+        <div class="">or</div>
+        <p class="cursor-pointer text-blue-500">Forgot password?</p>
+      </div>
+      <div
+        class="w-full flex justify-center gap-x-2 cursor-pointer border border-input hover:bg-input text-gray-400 hover:text-white py-2 px-4 rounded"
+      >
+        <p>G</p>
+        Sign in with Google
+      </div>
+    </div>
+    <div>df</div>
+  </div>
+</div>
+
+{% endblock %}
