@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock title %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block body %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-2  w-full max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
+    
+    <!-- Left Section -->
+    <div class="hidden lg:flex flex-col items-center justify-center bg-gray-200 p-8 rounded-l-lg shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        {% if website.logo %}
+          <img src="{{ website.logo.url }}" alt="{{ website.name }}" class="w-10 h-10 object-contain rounded-full">
+        {% else %}
+          <div class="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">
+            ?
+          </div>
+        {% endif %}
+        <p class="text-3xl font-bold text-gray-800">{{ website.name }}</p>
+      </div>
+    
+      <h2 class="text-2xl font-semibold text-gray-700 mt-2">Welcome back</h2>
+      <p class="text-sm text-gray-600 mt-1 text-center">
+            Already have an account?
+        <a href="{% url 'login' %}" class="text-blue-600 underline hover:text-blue-800">Sign In</a>
+      </p>
+    </div>
+    
+
+    <!-- Right Section (optional image or content) -->
+    
+    <div class="bg-auth p-8 text-white flex flex-col justify-center">
+      <div class="flex items-center space-x-3 mb-4 justify-center border-b border-gray-300 pb-4 lg:hidden">
+        {% if website.logo %}
+          <img src="{{ website.logo.url }}" alt="{{ website.name }}" class="w-10 h-10 object-contain rounded-full">
+        {% else %}
+          <div class="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">
+            ?
+          </div>
+        {% endif %}
+        <p class="text-3xl font-bold">{{ website.name }}</p>
+      </div>
+      
+
+      
+
+      <form action="" method="POST" class="mt-6 space-y-4">
+            {% csrf_token %}
+          
+            <div>
+              <label for="full_name" class="block text-sm font-medium">Full Name</label>
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                required
+                placeholder="Enter your full name"
+                class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          
+            <div>
+              <label for="email" class="block text-sm font-medium">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          
+            <div>
+              <label for="phone" class="block text-sm font-medium">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="Enter your phone number"
+                class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          
+            <div>
+              <label for="password" class="block text-sm font-medium">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="Enter your password"
+                class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          
+            <div>
+              <label for="confirm_password" class="block text-sm font-medium">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                required
+                placeholder="Re-enter your password"
+                class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          
+            <button
+              type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition"
+            >
+              Register
+            </button>
+          </form>
+          
+
+      <div class="text-sm mt-4 flex justify-between items-center text-gray-300">
+        <span></span>
+        <a href="" class="text-blue-400 hover:underline">Forgot password?</a>
+      </div>
+
+      <div class="mt-4 flex items-center justify-center gap-x-3 border border-input py-2 px-4 rounded cursor-pointer hover:bg-input hover:text-white text-gray-300 transition">
+        <i class="fa-brands fa-google text-red-400"></i>
+        <span>Sign in with Google</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

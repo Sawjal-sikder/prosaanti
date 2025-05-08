@@ -1,73 +1,94 @@
-{% extends "base.html" %} {% block title %}Login{% endblock title %} 
-{% block navbar %}{% endblock navbar %} {% block body %}
-<div class="p-4">
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-5 items-center">
-    <div class="bg-auth p-7 rounded-lg text-white">
-      <div class="flex">
-        <img src="" alt="" class="mb-2" />
-        <p class="text-2xl">Prosaanti</p>
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block body %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-2  w-full max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
+    
+    <!-- Left Section -->
+    <div class="bg-auth p-8 text-white flex flex-col justify-center">
+      <div class="flex items-center space-x-3 mb-4 justify-center border-b border-gray-300 pb-4 lg:hidden">
+        {% if website.logo %}
+          <img src="{{ website.logo.url }}" alt="{{ website.name }}" class="w-10 h-10 object-contain rounded-full">
+        {% else %}
+          <div class="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">
+            ?
+          </div>
+        {% endif %}
+        <p class="text-3xl font-bold">{{ website.name }}</p>
       </div>
+      
 
+      
 
-      <p class="text-2xl font-bold pt-5">Welcome back</p>
-      <div class="flex py-2 text-sm gap-x-2">
-        <p class="text-gray-400">
-          Start your account in seconds. Don’t have an account?
-        </p>
-        <p class="cursor-pointer text-blue-500">Sign up.</p>
-      </div>
-
-
-      <form action="" method="POST" class="my-2">
+      <form action="" method="POST" class="mt-6 space-y-4">
         {% csrf_token %}
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium text-white"
-            >Email</label
-          >
+        
+        <div>
+          <label for="email" class="block text-sm font-medium">Email</label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your email"
+            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div class="mb-4">
-          <label for="password" class="block text-sm font-medium text-white"
-            >Password</label
-          >
+
+        <div>
+          <label for="password" class="block text-sm font-medium">Password</label>
           <input
             type="password"
             id="password"
             name="password"
             required
-            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your password"
+            class="bg-input mt-1 block w-full p-2 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
+
         <button
           type="submit"
-          class="w-full bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition"
         >
           Login
         </button>
       </form>
 
-      
-      <div class="text-sm py-4 flex justify-between items-center">
-        <div class="">or</div>
-        <p class="cursor-pointer text-blue-500">Forgot password?</p>
+      <div class="text-sm mt-4 flex justify-between items-center text-gray-300">
+        <span></span>
+        <a href="" class="text-blue-400 hover:underline">Forgot password?</a>
       </div>
-      <div
-        class="w-full flex justify-center gap-x-2 cursor-pointer border border-input hover:bg-input text-gray-400 hover:text-white py-2 px-4 rounded"
-      >
-        <p>G</p>
-        Sign in with Google
+
+      <div class="mt-4 flex items-center justify-center gap-x-3 border border-input py-2 px-4 rounded cursor-pointer hover:bg-input hover:text-white text-gray-300 transition">
+        <i class="fa-brands fa-google text-red-400"></i>
+        <span>Sign in with Google</span>
       </div>
     </div>
-    <div>df</div>
+
+    <!-- Right Section (optional image or content) -->
+    <div class="hidden lg:flex flex-col items-center justify-center bg-gray-200 p-8 rounded-r-lg shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        {% if website.logo %}
+          <img src="{{ website.logo.url }}" alt="{{ website.name }}" class="w-10 h-10 object-contain rounded-full">
+        {% else %}
+          <div class="w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold">
+            ?
+          </div>
+        {% endif %}
+        <p class="text-3xl font-bold text-gray-800">{{ website.name }}</p>
+      </div>
+    
+      <h2 class="text-2xl font-semibold text-gray-700 mt-2">Welcome back</h2>
+      <p class="text-sm text-gray-600 mt-1 text-center">
+        Start your journey with us. Don’t have an account?
+        <a href="{% url 'register' %}" class="text-blue-600 underline hover:text-blue-800">Sign up</a>
+      </p>
+    </div>
+
   </div>
 </div>
-
 {% endblock %}

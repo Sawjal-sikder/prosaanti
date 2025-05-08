@@ -1,9 +1,17 @@
-{% extends "admin_base.html" %}
+{% extends "base.html" %}
 
 
 
-{% block admin_body %}
+{% block navbar %}
 {% include 'dashboard/admin_sidebar.html' %}
-{% include 'dashboard/admin_body.html' %}
+
+<div class="px-4 sm:ml-64 ">
+      <div class="p-4  rounded-lg mt-14 shadow-sm">
+            {% block dashboard_contain %}      
+            {% endblock dashboard_contain %}
+      </div>
+  </div>
+
+
 
 {% endblock %}

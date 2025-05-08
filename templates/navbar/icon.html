@@ -1,0 +1,60 @@
+<div class="flex items-center">
+      <div class="flex items-center ms-3">
+          <div>
+              <button type="button"
+                  class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 cursor-pointer"
+                  aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center bg-gray-300">
+                        {% if current_user.profile_picture %}
+                          <img src="{{ current_user.profile_picture.url }}" alt="user photo" class="w-8 h-8 object-cover rounded-full">
+                        {% else %}
+                          <i class="fas fa-user-circle text-xl text-gray-500"></i>
+                        {% endif %}
+                      </div>
+                      
+              </button>
+          </div>
+          <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
+              id="dropdown-user">
+              <div class="px-4 py-3" role="none">
+                  {% if current_user.first_name %}
+                  <p class="text-sm text-gray-900 d" role="none">
+                        {{ current_user.first_name }} {{ current_user.last_name }}
+                  </p>
+                  {% else %}
+                  <p>User</p>
+                  {% endif %}
+                  {% if current_user.email %}
+                  <p class="text-sm font-medium text-gray-900 truncate" role="none">
+                      {{ current_user.email }}
+                  </p>
+                  {% else %}
+                  <p>No Email</p>
+                  {% endif %}
+              </div>
+              <ul class="py-1" role="none">
+                  <li>
+                      <a href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          role="menuitem">Dashboard</a>
+                  </li>
+                  <li>
+                      <a href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          role="menuitem">Settings</a>
+                  </li>
+                  <li>
+                      <a href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          role="menuitem">Earnings</a>
+                  </li>
+                  <li>
+                      <a href="{% url 'logout' %}"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          role="menuitem">Sign out</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
