@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 
+{% block title %}Dashboard {% endblock title %}
+
 
 {% block navbar %}
 {% include 'dashboard/admin_sidebar.html' %}
 
 <div class="px-4 sm:ml-64 ">
-      <div class="p-4  rounded-lg mt-14 shadow-sm">
+      <div class="p-4  rounded-lg mt-14 ">
             {% block dashboard_contain %}      
             {% endblock dashboard_contain %}
       </div>

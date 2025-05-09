@@ -3,6 +3,7 @@ from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
+import re
 
 
 User = get_user_model()
@@ -51,6 +52,11 @@ def register_view(request):
         if password != confirm_password:
             messages.error(request, "Passwords do not match")
             return render(request, 'register.html')
+        
+        if not re.match(r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$', password):
+            messages.error(request, "Password must be at least 8 characters long and include at least one uppercase letter, one number, and one special character.")
+            return render(request, 'register.html')
+        
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email is already registered")

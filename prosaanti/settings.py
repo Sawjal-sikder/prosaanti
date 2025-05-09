@@ -20,8 +20,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third Party packages
     'phonenumber_field',
-    "crispy_forms",
-    "crispy_tailwind",
     # App
     'dashboard',
     'accounts',
@@ -114,7 +112,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PHONENUMBER_DEFAULT_REGION = 'BD'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ["tailwind"]
-CRISPY_TEMPLATE_PACK = "tailwind"
+
 
 

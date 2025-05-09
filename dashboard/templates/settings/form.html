@@ -1,37 +1,98 @@
 {% extends "admin.html" %}
 {% block dashboard_contain %}
-<div class=" p-6 bg-gray-800 shadow-md rounded-lg *:text-gray-400">
-    <h2 class="text-2xl font-semibold mb-6 border-b border-white pb-2">Website Information Update</h2>
-    
+<div class=" p-6 bg-adminbg shadow-md rounded-lg *:text-admin">
+    <h2 class="text-2xl font-semibold mb-6 border-b border-gray-800 pb-2">Website Information Update</h2>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        
-        <div class="space-y-4">
-            <!-- Loop through form fields to apply Tailwind styling -->
-            {% for field in form %}
-            <div>
-                <label for="{{ field.id_for_label }}" class="block text-sm font-medium  mb-2">
-                    {{ field.label }}
-                </label>
-                <div class="mt-1">
-                    {{ field }}
-                    {% if field.errors %}
-                        <p class="text-red-500 text-xs mt-1">
-                            {% for error in field.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </p>
-                    {% endif %}
-                </div>
-            </div>
+    
+        <!-- Name Field -->
+        <div class="mb-4">
+            <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                {{ form.name.label }}
+            </label>
+            <input type="text" name="name" id="{{ form.name.id_for_label }}" 
+                   class="w-full text-sm border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:outline-none" 
+                   placeholder="Enter name" value="{{ form.name.value|default:'' }}" />
+            {% for error in form.name.errors %}
+                <p class="text-sm text-red-500 mt-1">{{ error }}</p>
             {% endfor %}
         </div>
-
+    
+        <div class="lg:grid lg:grid-cols-2 lg:gap-x-10">
+            <!-- Phone Field -->
+            <div class="mb-4">
+                <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                    {{ form.phone.label }}
+                </label>
+                <input type="text" name="phone" id="{{ form.phone.id_for_label }}" 
+                       class="w-full text-sm border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:outline-none" 
+                       placeholder="Enter phone number" value="{{ form.phone.value|default:'' }}" />
+                {% for error in form.phone.errors %}
+                    <p class="text-sm text-red-500 mt-1">{{ error }}</p>
+                {% endfor %}
+            </div>
+        
+            <!-- Email Field -->
+            <div class="mb-4">
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                    {{ form.email.label }}
+                </label>
+                <input type="email" name="email" id="{{ form.email.id_for_label }}" 
+                       class="w-full text-sm border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:outline-none" 
+                       placeholder="Enter email" value="{{ form.email.value|default:'' }}" />
+                {% for error in form.email.errors %}
+                    <p class="text-sm text-red-500 mt-1">{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <!-- Address Field -->
+        <div class="mb-4">
+            <label for="{{ form.address.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                {{ form.address.label }}
+            </label>
+            <textarea name="address" id="{{ form.address.id_for_label }}" 
+                      class="w-full text-sm border border-gray-300 rounded-lg shadow-sm bg-gray-50 focus:outline-none"
+                      placeholder="Enter address">{{ form.address.value|default:'' }}</textarea>
+            {% for error in form.address.errors %}
+                <p class="text-sm text-red-500 mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+    
+        <div class="lg:grid lg:grid-cols-2 lg:gap-x-10 *:text-xs">
+            <!-- Logo Field -->
+            <div class="mb-4 ">
+                <label for="{{ form.logo.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                    {{ form.logo.label }}
+                </label>
+                {{ form.logo }}
+                {% for error in form.logo.errors %}
+                    <p class="text-sm text-red-500 mt-1">{{ error }}</p>
+                {% endfor %}
+            </div>
+        
+            <!-- Fabicon Field -->
+            <div class="mb-4">
+                <label for="{{ form.fabicon.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                    {{ form.fabicon.label }}
+                </label>
+                {{ form.fabicon }}
+                {% for error in form.fabicon.errors %}
+                    <p class="text-sm text-red-500 mt-1">{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <!-- Submit Button -->
         <div class="mt-6">
-            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
-                  Update Information 
+            <button type="submit" 
+                    class="w-full bg-gray-700 cursor-pointer hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
+                Update Information
             </button>
         </div>
     </form>
+    
+    
 </div>
 {% endblock %}
