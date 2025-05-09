@@ -84,3 +84,22 @@ def register_view(request):
 
     # Always return a response here for GET request
     return render(request, 'register.html')
+
+
+def forgot_password_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        print(email)
+
+        if not email:
+            messages.error(request, "Email is required")
+            return render(request, 'forgot_password.html')
+
+        try:
+            user = User.objects.get(email=email)
+            # Here you would typically send a password reset email
+            
+            messages.success(request, "Password reset link has been sent to your email")
+        except User.DoesNotExist:
+            messages.error(request, "Email not found")
+    return render(request, 'forgot_password.html')
